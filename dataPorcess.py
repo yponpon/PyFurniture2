@@ -34,6 +34,7 @@ def load_images_from_folder(folder):
     return filelist
 
 
+
 #整理資料
 imglist = load_images_from_folder(imgPath)
 for file in imglist:
