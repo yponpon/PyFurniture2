@@ -39,10 +39,10 @@ def plot_image_info(path, k=6) :
     # print('color_labels:',color_labels)
     # print('ordered_colors:',ordered_colors)
     # plots
-    plt.figure(figsize=(14, 8))
-    plt.subplot(221)
-    plt.imshow(img_rgb)
-    plt.axis('off')
+    # plt.figure(figsize=(14, 8))
+    # plt.subplot(221)
+    # plt.imshow(img_rgb)
+    # plt.axis('off')
     #計算比率
     def percentage(part, whole) :
         return 100 * float(part) / float(whole)
