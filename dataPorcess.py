@@ -12,7 +12,7 @@ import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1' #使用CPU運算
 ######################################################################################
 # imgPath = 圖片路徑
-imgPath = './train_all/'
+imgPath = './train_all/morden'
 
 #fileDict: Jons Dict, 將當前的圖片資料轉為Json欄位
 fileDIct = dict()
@@ -33,37 +33,14 @@ def load_images_from_folder(folder):
         break
     return filelist
 
-# def doInDir(somedir):
-#     print (somedir)
-#     fileList = os.listdir(somedir)
-#     for f in fileList:
-#         fullpath .i= os.path.join(somedir, f)
-#         if os.path.isdir(fullpath):
-#             doInDir(fullpath)
-#         elif os.path.isfile(fullpath):
-#             print(fullpath)
-fnamelist = []
-def doInDir(somedir):
-    fileList = os.listdir(somedir)
-    # print(fileList)
-    for f in fileList:
-        fullpath = os.path.join(somedir, f)
-        if os.pathsdir(fullpath):
-            doInDir(fullpath) #遞迴走訪
-        elif os.path.isfile(fullpath):
-            fname = somedir + '/' + f
-            fnamelist.append(fname)
-            print(fname)
-    return fnamelist
+
 
 #整理資料
-# imglist = load_images_from_folder(imgPath)
-imglist = doInDir(imgPath)
-# print(imglist)
+imglist = load_images_from_folder(imgPath)
 for file in imglist:
+    fileDIct.clear()
     print('當前檔案:',file,'處理中...')
-    # filePath = imgPath + '/' + file
-    filePath = file
+    filePath = imgPath + '/' + file
     fileDIct[file] = {'file':file}
     #取得風格
     style = getStyle(filePath)
@@ -76,6 +53,6 @@ for file in imglist:
         fileDIct[file][k] = v
     print(fileDIct)
 
-# save_name = './Json_save/' + file + '.json'
-with open('./Json_save/Json_save','w') as f:
-    json.dump(fileDIct,f)
+    save_name = './Json_save/' + file + '.json'
+    with open(save_name,'w') as f:
+        json.dump(fileDIct,f)
